@@ -115,8 +115,9 @@
           $this.data("sort-dir", sort_dir).addClass("sorting-"+sort_dir);
 
           var sortedTRs = $(apply_sort_map(trs, theMap));
-          $table.children("tbody").remove();
-          $table.append("<tbody />").append(sortedTRs);
+          var tbodyId = $table.children("tbody")[0].id;
+          $("#" + tbodyId + " tr").remove();
+          $table.append(sortedTRs);
 
           // Trigger `aftertablesort` event. Similar to `beforetablesort`
           $table.trigger("aftertablesort", {column: th_index, direction: sort_dir});
